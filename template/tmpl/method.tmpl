@@ -5,6 +5,11 @@ var supports = data.tags ? data.tags.filter(function (d) { return d.originalTitl
 ?>
 <hr>
 <dt>
+    <div class="pull-right">
+      <?js supports.forEach(function(s) { ?>
+        <span class="label label-success"><?js= s.text ?></span>
+      <?js }); ?>
+    </div>
     <h4 class="name" id="<?js= id ?>"><?js= data.attribs + (kind === 'class' ? 'new ' : '') + name + (kind !== 'event' ? data.signature : '') ?></h4>
 
     <?js if (data.summary) { ?>
@@ -15,11 +20,6 @@ var supports = data.tags ? data.tags.filter(function (d) { return d.originalTitl
 
     <?js if (data && data.description) { ?>
     <div class="description">
-        <div class="pull-right">
-          <?js supports.forEach(function(s) { ?>
-            <span class="label label-success"><?js= s.text ?></span>
-          <?js }); ?>
-        </div>
         <?js= data.description ?>
     </div>
     <?js } ?>
