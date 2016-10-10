@@ -161,7 +161,7 @@ function addSignatureParams(f) {
   var params = helper.getSignatureParams(f, optionalClass);
 
   f.signature = (f.signature || '') + '(';
-  
+
   for (var i = 0, l = params.length; i < l; i++) {
     var element = params[i];
     var seperator = (i > 0) ? ', ' : '';
@@ -172,7 +172,7 @@ function addSignatureParams(f) {
       var regExp = new RegExp("<span class=[\"|']"+optionalClass+"[\"|']>(.*?)<\\/span>", "i");
       f.signature += element.replace(regExp, " $`["+seperator+"$1$']");
     }
-    
+
   }
 
   f.signature += ')';
@@ -656,7 +656,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     if (needsSignature(doclet)) {
       addSignatureParams(doclet);
       addSignatureReturns(doclet);
-      addAttribs(doclet);
+      // addAttribs(doclet); // 移除 inner
     }
   });
 
@@ -671,7 +671,7 @@ exports.publish = function(taffyData, opts, tutorials) {
 
     if (doclet.kind === 'constant') {
       addSignatureTypes(doclet);
-      addAttribs(doclet);
+      // addAttribs(doclet); // 移除 static, constant
       doclet.kind = 'member';
     }
   });
